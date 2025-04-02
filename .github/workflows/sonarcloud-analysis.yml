@@ -41,11 +41,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build and run tests with Maven
-        run: |
-          mvn clean test
-
-      - name: Build with JaCoCo and analyze with SonarCloud
+      - name: Build, test, and analyze with SonarCloud
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
