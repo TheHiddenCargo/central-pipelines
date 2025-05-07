@@ -11,6 +11,10 @@ on:
         required: false
         type: string
         default: 'main'
+      coverage-exclusions:
+        required: false
+        type: string
+        default: ''
     secrets:
       SONAR_TOKEN:
         required: true
@@ -54,6 +58,7 @@ jobs:
           -Dsonar.branch.name=${{ inputs.branch-name }} \
           -Dsonar.token=$SONAR_TOKEN
           -Dsonar.java.coveragePlugin=jacoco \
+          -Dsonar.coverage.exclusions=${{ inputs.coverage-exclusions }}
 
       - name: Wait for SonarCloud Quality Gate
         run: |
